@@ -1,7 +1,12 @@
-import androidx.appcompat.app.AppCompatActivity
+package com.example.practica5
+
+import DogAdapter
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ListView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.practica5.API.APIService
 import com.example.practica5.R
 import kotlinx.coroutines.CoroutineScope
@@ -10,15 +15,26 @@ import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var etBreed: EditText
+    private lateinit var btnSearch: Button
+    private lateinit var lvDogs: ListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Llama a la función searchByName con el nombre de raza de perro que desees mostrar
-        searchByName("labrador")
+        etBreed = findViewById(R.id.etBreed)
+        btnSearch = findViewById(R.id.btnSearch)
+        lvDogs = findViewById(R.id.lvDogs)
+
+        btnSearch.setOnClickListener {
+            val breed = etBreed.text.toString()
+            if (breed.isNotBlank()) {
+                searchByName(breed)
+            }
+        }
     }
 
     private fun getRetrofit(): Retrofit {
@@ -41,15 +57,10 @@ class MainActivity : AppCompatActivity() {
                     dogImages.addAll(images)
 
                     val adapter = DogAdapter(this@MainActivity, dogImages)
-                    val listView = findViewById<ListView>(R.id.lvDogs)
-
-                    // Configura el adaptador para el ListView
-                    listView.adapter = adapter
-
-                    // Muestra el ListView
-                    listView.visibility = View.VISIBLE
+                    lvDogs.adapter = adapter
+                    lvDogs.visibility = View.VISIBLE
                 } else {
-                    // Muestra error
+                    // Mostrar error
                     // ...
                 }
             }

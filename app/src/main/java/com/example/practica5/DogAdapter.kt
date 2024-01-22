@@ -8,7 +8,7 @@ import com.example.practica5.R
 import com.squareup.picasso.Picasso
 
 class DogAdapter(context: Context, private val dataList: List<String>) :
-    ArrayAdapter<String>(context, R.layout.activity_main, dataList) {
+    ArrayAdapter<String>(context, R.layout.elemento_lista, dataList) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var itemView = convertView
@@ -16,9 +16,9 @@ class DogAdapter(context: Context, private val dataList: List<String>) :
 
         if (itemView == null) {
             val inflater = LayoutInflater.from(context)
-            itemView = inflater.inflate(R.layout.activity_main, parent, false)
+            itemView = inflater.inflate(R.layout.elemento_lista, parent, false)
             holder = ViewHolder()
-            holder.dogImageView = itemView.findViewById(R.id.lvDogs) // Reemplaza "imageView" con el ID de tu ImageView en el diseño de elementos de lista
+            holder.dogImageView = itemView.findViewById(R.id.imageViewDog)
             itemView.tag = holder
         } else {
             holder = itemView.tag as ViewHolder
