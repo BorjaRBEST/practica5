@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Función para realizar la búsqueda de imágenes de perros por raza
+    // Función para realizar la búsqueda de imágenes de perros por raza
     private fun searchByName(query: String) {
         CoroutineScope(Dispatchers.IO).launch {
             val call = getRetrofit().create(APIService::class.java).getDogsByBreeds("$query/images")
@@ -58,8 +59,10 @@ class MainActivity : AppCompatActivity() {
                 if (call.isSuccessful) {
                     // Si la solicitud es exitosa, actualiza la lista de imágenes
                     val images = puppies?.images ?: emptyList()
-                    dogImages.clear()
-                    dogImages.addAll(images)
+
+                    // Obtener 5 imágenes aleatorias de la lista
+                    val randomImages = images.shuffled().take(5)
+                    dogImages.addAll(randomImages)
 
                     val adapter = DogAdapter(this@MainActivity, dogImages)
                     lvDogs.adapter = adapter
@@ -71,4 +74,5 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
 }

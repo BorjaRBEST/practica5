@@ -10,10 +10,16 @@
         android:id="@+id/imageViewDog"
         android:layout_width="match_parent"
         android:layout_height="335dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/icono_perro"
-        />
+        android:scaleType="centerCrop"/>
 
-    <!-- Puedes agregar más elementos según sea necesario, como texto, botones, etc. -->
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:numStars="10"
+        android:stepSize="1"
+        android:rating="0.0"
+        />
 
 </LinearLayout>
