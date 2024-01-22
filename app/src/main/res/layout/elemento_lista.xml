@@ -15,9 +15,9 @@
     <RatingBar
         android:id="@+id/ratingBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="8dp"
-        android:numStars="10"
+        android:numStars="9"
         android:stepSize="1"
         android:rating="0.0"
         />

@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondoperro"
     tools:context=".MainActivity">
 
-    <!-- SearchView para buscar razas de perros -->
+
     <androidx.appcompat.widget.SearchView
         android:id="@+id/svDogs"
         android:layout_width="0dp"
@@ -28,7 +29,7 @@
         app:layout_constraintEnd_toStartOf="@+id/btnSearch"
         app:layout_constraintBottom_toTopOf="@+id/lvDogs" />
 
-    <!-- Botón para realizar la búsqueda -->
+
     <Button
         android:id="@+id/btnSearch"
         android:layout_width="wrap_content"
